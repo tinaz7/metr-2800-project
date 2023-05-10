@@ -109,37 +109,52 @@ void loop() {
       else {
         wheelsGoForward(20);
       }
+      
       break;
     case 3:
       // lift arm [tennis ball]
-      liftArm(3000);
+      liftArm(x);
       delay(500);
+      
       state = 4;
+      
+      break;
+      
     case 4:
       // drop arm [tennis ball]
-      dropArm(3000);
+      dropArm(x);
       delay(500);
+      
       state = 5;
+      
+      break;
+      
     case 5:
       // extend arm [tennis ball]
-      exteArm(3000);
+      extendArm(x);
       delay(500);
+      
       state = 5;
+      
+      break;
+      
     case 6:
       // retract arm [tennis ball]
     case 7:
-      // drive backwards
+      // rack and unrack
     case 8:
-      // drive leftwards
+      // drive backwards
     case 9:
-      // do a spin
+      // drive leftwards
     case 10:
-      // lift arm [squash ball]
+      // do a spin
     case 11:
-      // drop arm [squash ball]
+      // lift arm [squash ball]
     case 12:
-      // extend arm [squash ball]
+      // drop arm [squash ball]
     case 13:
+      // extend arm [squash ball]
+    case 14:
       // retract arm [squash ball]
   }
 
