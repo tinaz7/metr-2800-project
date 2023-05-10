@@ -127,8 +127,8 @@ void loop() {
       break;
       
     case 4:
-      // drop arm [tennis ball]
-      dropArm(TENNIS_ARM_LIFTING_TIME);
+      // extend arm [tennis ball]
+      extendArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
       state = 5;
@@ -136,8 +136,11 @@ void loop() {
       break;
       
     case 5:
-      // extend arm [tennis ball]
-      extendArm(TENNIS_ARM_EXTENDING_TIME);
+      // rack and unrack
+      rackOut();
+      delay(500);
+      
+      rackIn();
       delay(500);
       
       state = 6;
@@ -145,20 +148,19 @@ void loop() {
       break;
       
     case 6:
-      // retract arm [tennis ball]
-      retractArm(TENNIS_ARM_EXTENDING_TIME);
+      // drop arm [tennis ball]
+      dropArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
       state = 7;
       
       break;
       
-    case 7:
-      // rack and unrack
-      rackOut();
-      delay(500);
+    
       
-      rackIn();
+    case 7:
+      // retract arm [tennis ball]
+      retractArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
       state = 8;
