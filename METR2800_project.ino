@@ -37,6 +37,9 @@ int scooper_motor_pins[9] = {EXTENDER_FORWARDS, EXTENDER_BACKWARDS, EXTENDER_SPE
 
 int state = 0;
 
+const int ArmLiftingTime = 3000;
+
+
 void setup() {
 
   // Set Wheel Motor Pins
@@ -73,8 +76,13 @@ void loop() {
 
   
   switch (state) {
-
-    case 0: 
+    case 0:
+      // does nothing
+      while (True) {
+        Serial.println("Paused");
+        delay(1000);
+      }
+    case 1: 
     // drive right
       int distance_ledge = sensorDistance(LEDGE_SENSOR_TRIGGER, LEDGE_SENSOR_ECHO);
       
@@ -87,7 +95,7 @@ void loop() {
       }
       break;
       
-    case 1: 
+    case 2: 
     // drive forward
       int distance_left = sensorDistance(LEFT_SENSOR_TRIGGER, LEFT_SENSOR_ECHO);
 
@@ -102,8 +110,37 @@ void loop() {
         wheelsGoForward(20);
       }
       break;
-    case 2:
-      // lift arm
+    case 3:
+      // lift arm [tennis ball]
+      liftArm(3000);
+      delay(500);
+      state = 4;
+    case 4:
+      // drop arm [tennis ball]
+      dropArm(3000);
+      delay(500);
+      state = 5;
+    case 5:
+      // extend arm [tennis ball]
+      exteArm(3000);
+      delay(500);
+      state = 5;
+    case 6:
+      // retract arm [tennis ball]
+    case 7:
+      // drive backwards
+    case 8:
+      // drive leftwards
+    case 9:
+      // do a spin
+    case 10:
+      // lift arm [squash ball]
+    case 11:
+      // drop arm [squash ball]
+    case 12:
+      // extend arm [squash ball]
+    case 13:
+      // retract arm [squash ball]
   }
 
 /**
@@ -247,9 +284,8 @@ void wheelsRotateLeft(int delay_time) {
   
 }
 
-void liftArm() {
+void liftArm(int delay_time) {
   int motor_speed = x;
-  int delay_time = x;
 
   analogWrite(scooper_motor_pins[9], motor_speed);
   digitalWrite(scooper_motor_pins[7], HIGH);
@@ -260,9 +296,8 @@ void liftArm() {
 
 }
 
-void dropArm() {
+void dropArm(int delay_time) {
   int motor_speed = x; // motor speed (0-255)
-  int delay_time = x; // time of motor operation (ms)
 
   analogWrite(scooper_motor_pins[9], motor_speed);
   digitalWrite(scooper_motor_pins[8], HIGH);
@@ -273,9 +308,8 @@ void dropArm() {
 
 }
 
-void extendArm() {
+void extendArm(int delay_time) {
   int motor_speed = x; // motor speed (0-255)
-  int delay_time = x; // time of motor operation (ms)
 
   analogWrite(scooper_motor_pins[3], motor_speed);
   digitalWrite(scooper_motor_pins[1], HIGH);
@@ -286,9 +320,8 @@ void extendArm() {
 
 }
 
-void retractArm() {
+void retractArm(int delay_time) {
   int motor_speed = x; // motor speed (0-255)
-  int delay_time = x; // time of motor operation (ms)
 
   analogWrite(scooper_motor_pins[3], motor_speed);
   digitalWrite(scooper_motor_pins[2], HIGH);
