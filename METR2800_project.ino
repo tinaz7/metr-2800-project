@@ -140,7 +140,7 @@ void loop() {
       extendArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 5;
+      state = 6;
       
       break;
       
@@ -149,7 +149,7 @@ void loop() {
       retractArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 6;
+      state = 7;
       
       break;
       
