@@ -42,7 +42,7 @@ int state = 0;
 const int TENNIS_ARM_LIFTING_TIME = 3000;
 const int SQUASH_ARM_LIFTING_TIME = x;
 const int TENNIS_ARM_EXTENDING_TIME = x;
-const int SQUASH_ARM_LIFTING_TIME = x;
+const int SQUASH_ARM_EXTENDING_TIME = x;
 
 
 
@@ -119,7 +119,7 @@ void loop() {
       break;
     case 3:
       // lift arm [tennis ball]
-      liftArm(x);
+      liftArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
       state = 4;
@@ -128,7 +128,7 @@ void loop() {
       
     case 4:
       // drop arm [tennis ball]
-      dropArm(x);
+      dropArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
       state = 5;
@@ -137,7 +137,7 @@ void loop() {
       
     case 5:
       // extend arm [tennis ball]
-      extendArm(x);
+      extendArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
       state = 5;
@@ -146,6 +146,13 @@ void loop() {
       
     case 6:
       // retract arm [tennis ball]
+      retractArm(TENNIS_ARM_EXTENDING_TIME);
+      delay(500);
+      
+      state = 6;
+      
+      break;
+      
     case 7:
       // rack and unrack
       rackOut();
