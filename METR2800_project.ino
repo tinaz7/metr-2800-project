@@ -94,7 +94,7 @@ void loop() {
       
       if (distance_ledge > 5) {
         stopWheels(20);
-        state = 1;
+        state = 2;
       }
       else {
         wheelsGoRight(20);
@@ -109,7 +109,7 @@ void loop() {
       
       if (distance_left < 18) {
         stopWheels(20);
-        state = 2;
+        state = 3;
         Serial.println("I am here, look at me");
       }
       else {
