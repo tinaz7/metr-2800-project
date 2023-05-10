@@ -142,6 +142,16 @@ void loop() {
       // retract arm [tennis ball]
     case 7:
       // rack and unrack
+      rackOut();
+      delay(500);
+      
+      rackIn();
+      delay(500);
+      
+      state = 8;
+      
+      break;
+      
     case 8:
       // drive backwards
     case 9:
