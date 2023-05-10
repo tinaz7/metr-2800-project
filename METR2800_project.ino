@@ -37,7 +37,13 @@ int scooper_motor_pins[9] = {EXTENDER_FORWARDS, EXTENDER_BACKWARDS, EXTENDER_SPE
 
 int state = 0;
 
-const int ArmLiftingTime = 3000;
+// Times for different exercises
+
+const int TENNIS_ARM_LIFTING_TIME = 3000;
+const int SQUASH_ARM_LIFTING_TIME = x;
+const int TENNIS_ARM_EXTENDING_TIME = x;
+const int SQUASH_ARM_LIFTING_TIME = x;
+
 
 
 void setup() {
