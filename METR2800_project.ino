@@ -43,6 +43,7 @@ const int TENNIS_ARM_LIFTING_TIME = 3000;
 const int SQUASH_ARM_LIFTING_TIME = x;
 const int TENNIS_ARM_EXTENDING_TIME = x;
 const int SQUASH_ARM_EXTENDING_TIME = x;
+const int FINAL_RIGHT_MOVEMENT_TIME = x;
 const int QUARTER_TURN_TIME = x;
 const int HALF_TURN_TIME = x;
 const int MIDDLING_TIME = x
@@ -78,7 +79,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(state);
   Serial.println("Pissing my pants rn fr");
   state = 0;
 
@@ -278,6 +278,11 @@ void loop() {
     case 12:
       // drive rightwards
       Serial.println("State 12");
+      
+      wheelsGoRight(FINAL_RIGHT_MOVEMENT_TIME);
+      delay(500);
+      
+      state = 13;
       
       break;
     case 13:
