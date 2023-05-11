@@ -43,7 +43,8 @@ const int TENNIS_ARM_LIFTING_TIME = 3000;
 const int SQUASH_ARM_LIFTING_TIME = x;
 const int TENNIS_ARM_EXTENDING_TIME = x;
 const int SQUASH_ARM_EXTENDING_TIME = x;
-
+const int QUARTER_TURN_TIME = x;
+const int HALF_TURN_TIME = x;
 
 
 void setup() {
@@ -83,11 +84,16 @@ void loop() {
   
   switch (state) {
     case 0:
-      // does nothing
-      while (True) {
-        Serial.println("Paused");
-        delay(1000);
-      }
+      // drop arm [start]
+      Serial.println("State 0");
+      
+      dropArm(TENNIS_ARM_LIFTING_TIME);
+      delay(500);
+      
+      state = 1;
+      
+      break;
+      
     case 1: 
     // drive right
       int distance_ledge = sensorDistance(LEDGE_SENSOR_TRIGGER, LEDGE_SENSOR_ECHO);
@@ -126,6 +132,8 @@ void loop() {
       state = 4;
       
       break;
+      
+      // DO WE NEED TO DRIVE FORWARD HERE???
       
     case 4:
       // extend arm [tennis ball]
@@ -169,9 +177,43 @@ void loop() {
     case 8:
       // drive backwards
     case 9:
-      // drive leftwards
-    case 10:
       // do a spin
+      // turn until both censors are equal??
+      wheelsRotateLeft(HALF_TURN_TIME);
+      delay(500);
+      
+      state = 10;
+      
+      
+      /*
+      int distance_left = sensorDistance(LEFT_SENSOR_TRIGGER, LEFT_SENSOR_ECHO);
+      int distance_right = sensorDistance(RIGHT_SENSOR_TRIGGER, RIGHT_SENSOR_ECHO);
+
+      wheelsRotateLeft (LITTLE_LESS_THAN_HALF_TURN_TIME);
+      
+      Serial.println(distance_left);
+      
+      if (distance_right > distance_left) {
+        stopWheels(20);
+        state = 3;
+        Serial.println("I am here, look at me");
+      }
+      else {
+        wheelsRotateLft(20);
+      }
+      */
+      
+      break;
+      
+    case 10:
+      // drive rightwards
+      
+      
+      
+      state = 11;
+      
+      break;
+      
     case 11:
       // lift arm [squash ball]
       liftArm(SQUASH_ARM_LIFTING_TIME);
@@ -435,6 +477,7 @@ void rackIn() {
   digitalWrite(scooper_motor_pins[5], LOW);
 
 }
+  
 
 int sensorDistance(int trigger_pin, int echo_pin) {
 
