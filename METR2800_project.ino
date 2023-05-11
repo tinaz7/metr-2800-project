@@ -46,7 +46,7 @@ const int SQUASH_ARM_EXTENDING_TIME = x;
 const int FINAL_RIGHT_MOVEMENT_TIME = x;
 const int QUARTER_TURN_TIME = x;
 const int HALF_TURN_TIME = x;
-const int MIDDLING_TIME = x
+const int MIDDLING_TIME = x;
 
 
 void setup() {
