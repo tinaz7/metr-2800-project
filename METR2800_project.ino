@@ -155,6 +155,7 @@ void loop() {
     case 5:
       // rack and unrack
       Serial.println("State 5");
+      
       rackOut();
       delay(500);
       
@@ -190,6 +191,18 @@ void loop() {
     case 8:
       // drive backwards
       Serial.println("State 8");
+      
+      int distance_left = sensorDistance(LEFT_SENSOR_TRIGGER, LEFT_SENSOR_ECHO);
+      
+      Serial.println(distance_left);
+      
+      if (distance_left > 40) {  // Distance???????
+        stopWheels(20);
+        state = 9;
+      }
+      else {
+        wheelsGoBackwards(20);
+      }
       
       break;
       
@@ -232,7 +245,7 @@ void loop() {
 
       Serial.println(distance_right);
       
-      if (distance_right < 50) { // check the numbers on this depending on how close the squash balls are
+      if (distance_right < 30) { // check the numbers on this depending on how close the squash balls are
         wheelsGoRight(MIDDLING_TIME);
         stopWheels(20);
         state = 11;
