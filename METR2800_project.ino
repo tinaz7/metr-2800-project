@@ -52,6 +52,12 @@ const int MIDDLING_TIME = x;
 
 const int INITIAL_DROP_ARM = 11;
 const int DRIVE_TO_RIGHT_LEDGE = 12;
+const int FIRST_DRIVE_TENNIS_PLATFORM = 13;
+const int LIFT_TENNIS_SILO = 21;
+const int SECOND_DRIVE_TENNIS_SILO = 22;
+const int EXTEND_TENNIS_SILO = 23;
+const int DEPOSIT_TENNIS = 24;
+
 
 void setup() {
 
@@ -178,10 +184,10 @@ void loop() {
       break;
       
     case 25:
-      // drop arm [tennis ball]
-      Serial.println("State 6");
+      // retract arm [tennis ball]
+      Serial.println("State 7");
       
-      dropArm(TENNIS_ARM_LIFTING_TIME);
+      retractArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
       state = 26;
@@ -189,10 +195,10 @@ void loop() {
       break;
       
     case 26:
-      // retract arm [tennis ball]
-      Serial.println("State 7");
+      // drop arm [tennis ball]
+      Serial.println("State 6");
       
-      retractArm(TENNIS_ARM_EXTENDING_TIME);
+      dropArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
       state = 31;
