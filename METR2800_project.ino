@@ -48,6 +48,10 @@ const int QUARTER_TURN_TIME = x;
 const int HALF_TURN_TIME = x;
 const int MIDDLING_TIME = x;
 
+// Names for states
+
+const int INITIAL_DROP_ARM = 11;
+const int DRIVE_TO_RIGHT_LEDGE = 12;
 
 void setup() {
 
