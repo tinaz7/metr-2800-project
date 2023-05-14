@@ -136,11 +136,18 @@ void loop() {
       liftArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 4;
+      state = 31;
       
       break;
       
       // DO WE NEED TO DRIVE FORWARD HERE???
+    case 31:
+      // go forward or something idk
+      
+      
+      state = 4;
+      
+      break;
       
     case 4:
       // extend arm [tennis ball]
