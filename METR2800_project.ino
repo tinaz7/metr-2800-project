@@ -80,22 +80,22 @@ void setup() {
 
 void loop() {
   Serial.println("Pissing my pants rn fr");
-  state = 0;
+  state = 11;
 
   
   switch (state) {
-    case 0:
+    case 11:
       // drop arm [start]
       Serial.println("State 0");
       
       dropArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 1;
+      state = 12;
       
       break;
       
-    case 1: 
+    case 12: 
       // drive right
       Serial.println("State 1");
       
@@ -103,14 +103,14 @@ void loop() {
       
       if (distance_ledge > 5) {
         stopWheels(20);
-        state = 2;
+        state = 13;
       }
       else {
         wheelsGoRight(20);
       }
       break;
       
-    case 2: 
+    case 13: 
       // drive forward
       Serial.println("State 2");
       
@@ -120,7 +120,7 @@ void loop() {
       
       if (distance_left < 18) {
         stopWheels(20);
-        state = 3;
+        state = 21;
         Serial.println("I am here, look at me");
       }
       else {
@@ -129,37 +129,37 @@ void loop() {
       
       break;
       
-    case 3:
+    case 21:
       // lift arm [tennis ball]
       Serial.println("State 3");
       
       liftArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 31;
+      state = 22;
       
       break;
       
       // DO WE NEED TO DRIVE FORWARD HERE???
-    case 31:
+    case 22:
       // go forward or something idk
       
       
-      state = 4;
+      state = 23;
       
       break;
       
-    case 4:
+    case 23:
       // extend arm [tennis ball]
       Serial.println("State 4");
       extendArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 5;
+      state = 24;
       
       break;
       
-    case 5:
+    case 24:
       // rack and unrack
       Serial.println("State 5");
       
@@ -169,33 +169,33 @@ void loop() {
       rackIn();
       delay(500);
       
-      state = 6;
+      state = 25;
       
       break;
       
-    case 6:
+    case 25:
       // drop arm [tennis ball]
       Serial.println("State 6");
       
       dropArm(TENNIS_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 7;
+      state = 26;
       
       break;
       
-    case 7:
+    case 26:
       // retract arm [tennis ball]
       Serial.println("State 7");
       
       retractArm(TENNIS_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 8;
+      state = 31;
       
       break;
       
-    case 8:
+    case 31:
       // drive backwards
       Serial.println("State 8");
       
@@ -205,7 +205,7 @@ void loop() {
       
       if (distance_left > 40) {  // Distance???????
         stopWheels(20);
-        state = 9;
+        state = 32;
       }
       else {
         wheelsGoBackwards(20);
@@ -213,7 +213,7 @@ void loop() {
       
       break;
       
-    case 9:
+    case 32:
       // do a spin
       // turn until both censors are equal??
       Serial.println("State 9");
@@ -221,7 +221,7 @@ void loop() {
       wheelsRotateLeft(HALF_TURN_TIME);
       delay(500);
       
-      state = 10;
+      state = 33;
       
       
       /*
@@ -234,7 +234,7 @@ void loop() {
       
       if (distance_right > distance_left) {
         stopWheels(20);
-        state = 3;
+        state = 33;
         Serial.println("I am here, look at me");
       }
       else {
@@ -244,7 +244,7 @@ void loop() {
       
       break;
       
-    case 10:
+    case 33:
       // drive rightwards -> Until when?? maybe a hundredish milliseconds after initial sensoring
       Serial.println("State 10");
       
@@ -255,7 +255,7 @@ void loop() {
       if (distance_right < 30) { // check the numbers on this depending on how close the squash balls are
         wheelsGoRight(MIDDLING_TIME);
         stopWheels(20);
-        state = 11;
+        state = 41;
       }
       else {
         wheelsGoRight(20);
@@ -263,7 +263,7 @@ void loop() {
       
       break;
       
-    case 11:
+    case 41:
       // drive forwards - sensor use
       Serial.println("State 11");
       
@@ -273,7 +273,7 @@ void loop() {
       
       if (distance_left < 18) {
         stopWheels(20);
-        state = 12;
+        state = 42;
         Serial.println("I am here, look at me");
       }
       else {
@@ -282,39 +282,39 @@ void loop() {
       
       break;
       
-    case 12:
+    case 42:
       // drive rightwards
       Serial.println("State 12");
       
       wheelsGoRight(FINAL_RIGHT_MOVEMENT_TIME);
       delay(500);
       
-      state = 13;
+      state = 51;
       
       break;
-    case 13:
+    case 51:
       // lift arm [squash ball]
       Serial.println("State 13");
       
       liftArm(SQUASH_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 14;
+      state = 52;
       
       break;
       
-    case 14:
+    case 52:
       // extend arm [squash ball]
       Serial.println("State 14")
       
       extendArm(SQUASH_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 15;
+      state = 53;
       
       break;
 
-    case 15:
+    case 53:
       // rack and unrack
       Serial.println("State 15");
       
@@ -324,30 +324,33 @@ void loop() {
       rackIn();
       delay(500);
       
-      state = 16;
+      state = 54;
       
       break;
       
-    case 16:
+    case 54:
       // drop arm [squash ball]
       Serial.println("State 16");
       
       dropArm(SQUASH_ARM_LIFTING_TIME);
       delay(500);
       
-      state = 17;
+      state = 55;
       
       break;
       
-    case 17:
+    case 55:
       // retract arm [squash ball]
       Serial.println("State 17");
       
       retractArm(SQUASH_ARM_EXTENDING_TIME);
       delay(500);
       
-      state = 18;
+      state = 61;
       
+      break;
+    case 61:
+      // need to go back to the start/stop area
       break;
   }
 
